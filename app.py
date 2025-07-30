@@ -2,6 +2,9 @@
 import os
 import sys
 
+# 添加字体文件路径
+font_path = os.path.join(os.path.dirname(__file__), 'fonts/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf')
+
 if getattr(sys, 'frozen', False):
     # 运行在PyInstaller打包环境中
     import matplotlib
@@ -12,10 +15,6 @@ if getattr(sys, 'frozen', False):
     cache_dir = os.path.join(tempfile.gettempdir(), 'matplotlib')
     os.makedirs(cache_dir, exist_ok=True)
     os.environ['MPLCONFIGDIR'] = cache_dir
-    
-    # 禁用字体缓存重建
-    matplotlib.rcParams['font.family'] = 'DejaVu Sans'
-    matplotlib.rcParams['font.sans-serif'] = ['DejaVu Sans']
     
     # 预加载matplotlib以避免运行时字体扫描
     import matplotlib.pyplot as plt
@@ -44,14 +43,13 @@ st.set_page_config(
 )
 
 # 设置中文字体
-if getattr(sys, 'frozen', False):
-    # PyInstaller环境，使用简单字体配置
-    plt.rcParams['font.family'] = 'DejaVu Sans'
+if os.path.exists(font_path):
+    plt.rcParams['font.family'] = ['Source Han Sans SC']
     plt.rcParams['axes.unicode_minus'] = False
+    import matplotlib.font_manager as fm
+    fm.fontManager.addfont(font_path)
 else:
-    # 开发环境，使用完整字体配置
-    plt.rcParams['font.sans-serif'] = ['SimHei', 'Arial Unicode MS', 'DejaVu Sans']
-    plt.rcParams['axes.unicode_minus'] = False
+    st.error("未找到字体文件，中文显示可能会出现问题。")
 
 def validate_data(df):
     """验证数据格式和内容"""
