@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows系统Python安装&使用指南</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        code {
+            background-color: #f1f2f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e74c3c;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        pre code {
+            background-color: transparent;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        strong {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .tip-box {
+            background-color: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .problem-box {
+            background-color: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .step-number {
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Windows系统Python安装&使用指南</h1>
+
+        <h2>第一步：下载Python</h2>
+        <ol>
+            <li>打开浏览器，访问Python官网：<a href="https://www.python.org/" target="_blank">https://www.python.org/</a></li>
+            <li>点击页面上的 <strong>"Downloads"</strong> 按钮</li>
+            <li>网站会自动识别你的Windows系统，显示 <strong>"Download Python 3.x.x"</strong> 按钮</li>
+            <li>点击这个黄色的下载按钮，开始下载Python安装包</li>
+        </ol>
+
+        <h2>第二步：安装Python</h2>
+        <ol>
+            <li>找到刚才下载的文件（通常在"下载"文件夹中），双击运行</li>
+            <li><strong>重要</strong>：在安装界面的最下方，勾选 <strong>"Add Python to PATH"</strong> 选项
+                <ul><li>这一步很重要，勾选后可以自动配置环境变量</li></ul>
+            </li>
+            <li>点击 <strong>"Install Now"</strong> 开始安装</li>
+            <li>等待安装完成，看到 <strong>"Setup was successful"</strong> 提示即可</li>
+        </ol>
+
+        <h2>第三步：验证安装是否成功</h2>
+        <ol>
+            <li>按 <strong>Win + R</strong> 键，打开"运行"对话框</li>
+            <li>输入 <strong>cmd</strong> 并按回车，打开命令提示符</li>
+            <li>在黑色窗口中输入：<code>python --version</code></li>
+            <li>如果显示Python版本号（如：Python 3.11.0），说明安装成功</li>
+        </ol>
+
+        <h2>第四步：手动配置环境变量（如果第二步没有勾选）</h2>
+        <p>如果在安装时忘记勾选"Add Python to PATH"，可以手动配置：</p>
+        <ol>
+            <li>右键点击 <strong>"此电脑"</strong> → 选择 <strong>"属性"</strong></li>
+            <li>点击 <strong>"高级系统设置"</strong></li>
+            <li>点击 <strong>"环境变量"</strong> 按钮</li>
+            <li>在"系统变量"区域找到 <strong>"Path"</strong>，双击打开</li>
+            <li>点击 <strong>"新建"</strong>，添加Python安装路径：
+                <ul>
+                    <li>通常是：<code>C:\Users\你的用户名\AppData\Local\Programs\Python\Python311\</code></li>
+                    <li>再添加：<code>C:\Users\你的用户名\AppData\Local\Programs\Python\Python311\Scripts\</code></li>
+                </ul>
+            </li>
+            <li>点击 <strong>"确定"</strong> 保存所有设置</li>
+            <li>重新打开命令提示符测试</li>
+        </ol>
+
+        <h2>第五步：安装常用工具</h2>
+        <p>在命令提示符中输入以下命令，安装pip包管理工具（通常已自动安装）：</p>
+        <pre><code>python -m pip install --upgrade pip</code></pre>
+
+        <h2>常见问题解决</h2>
+        
+        <div class="problem-box">
+            <h3>问题1：输入python命令提示"不是内部或外部命令"</h3>
+            <p><strong>解决方法</strong>：说明环境变量没有配置好，请按照第四步重新配置</p>
+        </div>
+
+        <div class="problem-box">
+            <h3>问题2：安装时提示权限不足</h3>
+            <p><strong>解决方法</strong>：右键点击安装包，选择"以管理员身份运行"</p>
+        </div>
+
+        <div class="problem-box">
+            <h3>问题3：找不到Python安装路径</h3>
+            <p><strong>解决方法</strong>：</p>
+            <ol>
+                <li>在开始菜单搜索"Python"</li>
+                <li>右键点击Python程序 → "打开文件位置"</li>
+                <li>复制这个路径用于环境变量配置</li>
+            </ol>
+        </div>
+
+        <div class="problem-box">
+            <h3>问题4：python命令可以使用，但pip命令提示"不是内部或外部命令"</h3>
+            <p><strong>解决方法</strong>：这说明环境变量中缺少pip的路径，需要添加Scripts文件夹：</p>
+            <ol>
+                <li>按照第四步的方法打开环境变量设置</li>
+                <li>在Path中添加Python的Scripts目录：
+                    <ul>
+                        <li>通常是：<code>C:\Users\你的用户名\AppData\Local\Programs\Python\Python311\Scripts\</code></li>
+                        <li>注意：这个路径末尾有\Scripts\</li>
+                    </ul>
+                </li>
+                <li>保存设置后重新打开命令提示符</li>
+                <li>输入 <code>pip --version</code> 测试是否成功</li>
+            </ol>
+            <p><strong>如果还是不行，可以尝试</strong>：</p>
+            <ul>
+                <li>使用完整路径：<code>python -m pip --version</code></li>
+                <li>重新安装Python时勾选"Add Python to PATH"选项</li>
+            </ul>
+        </div>
+
+        <div class="tip-box">
+            <h3>万能解决方案：重启电脑</h3>
+            <p>如果以上所有方法都尝试过了，问题仍然存在，请尝试<strong>重启电脑</strong>：</p>
+            <ul>
+                <li>环境变量的修改有时需要重启才能完全生效</li>
+                <li>重启后重新打开命令提示符测试</li>
+                <li>这个方法可以解决大部分环境配置相关的问题</li>
+            </ul>
+            <p><strong>重启后仍有问题</strong>：</p>
+            <ul>
+                <li>考虑完全卸载Python后重新安装</li>
+                <li>安装时务必勾选"Add Python to PATH"选项</li>
+            </ul>
+        </div>
+
+        <h2>第六步：运行Python项目</h2>
+        <p>安装好Python后，你可能需要运行别人写好的Python项目。以下是完整步骤：</p>
+
+        <h3>1. 获取项目文件</h3>
+        <ul>
+            <li>从GitHub、邮件或其他渠道下载项目文件</li>
+            <li>解压到一个容易找到的位置（如桌面或D盘）</li>
+        </ul>
+
+        <h3>2. 打开项目文件夹</h3>
+        <ol>
+            <li>按 <strong>Win + R</strong> 键，输入 <strong>cmd</strong> 打开命令提示符</li>
+            <li>使用 <strong>cd</strong> 命令进入项目文件夹，例如：
+                <pre><code>cd D:\my_python_project</code></pre>
+                （将路径替换为你的实际项目路径）
+            </li>
+        </ol>
+
+        <h3>3. 安装项目依赖</h3>
+        <p>大多数Python项目都有一个 <strong>requirements.txt</strong> 文件，里面列出了需要的软件包。</p>
+        <p>在项目文件夹中输入以下命令：</p>
+        <pre><code>pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></pre>
+        
+        <p><strong>说明</strong>：</p>
+        <ul>
+            <li><code>pip install -r requirements.txt</code>：安装项目所需的所有依赖包</li>
+            <li><code>-i https://pypi.tuna.tsinghua.edu.cn/simple/</code>：使用清华大学镜像源，下载速度更快</li>
+        </ul>
+
+        <h3>4. 运行Python脚本</h3>
+        <p>安装完依赖后，就可以运行项目了：</p>
+        <pre><code>python main.py</code></pre>
+        <p>（将 <code>main.py</code> 替换为项目的主要脚本文件名）</p>
+
+        <h3>5. 常见运行问题</h3>
+        
+        <div class="problem-box">
+            <p><strong>问题1：找不到requirements.txt文件</strong></p>
+            <ul>
+                <li>检查是否在正确的项目文件夹中</li>
+                <li>有些项目可能没有这个文件，直接运行脚本即可</li>
+            </ul>
+        </div>
+
+        <div class="problem-box">
+            <p><strong>问题2：安装依赖时出现错误</strong></p>
+            <ul>
+                <li>尝试升级pip：<code>python -m pip install --upgrade pip</code></li>
+                <li>如果还有问题，可以逐个安装：<code>pip install 包名</code></li>
+            </ul>
+        </div>
+
+        <div class="problem-box">
+            <p><strong>问题3：运行脚本时提示缺少模块</strong></p>
+            <ul>
+                <li>说明有依赖包没有安装成功</li>
+                <li>根据错误提示安装对应的包：<code>pip install 模块名</code></li>
+            </ul>
+        </div>
+
+        <h3>6. 实用技巧</h3>
+        
+        <p><strong>查看已安装的包</strong>：</p>
+        <pre><code>pip list</code></pre>
+        
+        <p><strong>查看项目文件</strong>：</p>
+        <pre><code>dir</code></pre>
+        <p>（在命令提示符中查看当前文件夹内容）</p>
+        
+        <p><strong>退出程序</strong>：</p>
+        <ul><li>如果程序一直在运行，按 <strong>Ctrl + C</strong> 可以停止</li></ul>
+
+        <h2>完成！</h2>
+        <p>现在你已经掌握了Python的安装和基本使用方法！可以开始运行各种Python项目了。</p>
+        
+        <div class="tip-box">
+            <p><strong>小贴士</strong>：</p>
+            <ul>
+                <li>建议安装一个代码编辑器，如VS Code或PyCharm，让编程更加方便</li>
+                <li>遇到问题时，可以复制错误信息到搜索引擎查找解决方案</li>
+                <li>多练习几次，很快就能熟练掌握这些操作</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
